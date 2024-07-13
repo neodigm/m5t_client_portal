@@ -108,7 +108,8 @@ console.log("----- --- -- -- -- OSTATE | " , OSTATE)
 
     const client = new pg.Client( OSTATE.pstg )  //  TODO meter
     await client.connect()
-    let sSQL = `SELECT * FROM "` + OSTATE.schm + `"."acctEntity" WHERE guid = '` + sGuid + `' AND "status" != 'DELETED';`
+console.log("----- --- -- -- -- Connected | " , sGuid)
+let sSQL = `SELECT * FROM "` + OSTATE.schm + `"."acctEntity" WHERE guid = '` + sGuid + `' AND "status" != 'DELETED';`
 console.log("----- --- -- -- -- sSQL | " + sSQL)
     let dbClient = await client.query( sSQL )
     await client.end()  //  End Client Connection

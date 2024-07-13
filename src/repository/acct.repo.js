@@ -104,6 +104,8 @@ class AcctRepo {
 
   static async SessionAcctEntity( req, sGuid ){  //  Get 1 or more related entities given guid
     let oEnt = {}, oParent = {}, oGrandparent = {}
+console.log("----- --- -- -- -- OSTATE | " , OSTATE)
+
     const client = new pg.Client( OSTATE.pstg )  //  TODO meter
     await client.connect()
     let sSQL = `SELECT * FROM "` + OSTATE.schm + `"."acctEntity" WHERE guid = '` + sGuid + `' AND "status" != 'DELETED';`

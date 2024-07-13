@@ -44,7 +44,7 @@ wdgtRoute.post('/create', async (req, res) => { //  Create new entity
 } )
 
 wdgtRoute.post('/sndbx/create', async (req, res) => { //  Create new sndbx
-    //https://intd-idp-api-v1-iods.onrender.com/v1/wdgt/sndbx/create
+    //https://m5t-client-portal.onrender.com/v1/wdgt/sndbx/create
     if( AgentUtils.evalRequest( req ) ){
         req.appIp = AgentUtils.getIP( req )  //  DTO app vars - IP
         req.appLoc = AgentUtils.getLoc( req )  //  DTO app vars - appLoc
@@ -94,7 +94,7 @@ wdgtRoute.delete('/:id', async (req, res) => { // soft del one
 } )
 
 //  ouside consumables | Agent
-//  https://intd-idp-api-v1-iods.onrender.com/v1/wdgt/logic/compress_json.js
+//  https://m5t-client-portal.onrender.com/v1/wdgt/logic/compress_json.js
 wdgtRoute.get('/:id/content', async (req, res) => { // Get one (+partial) content JSON
     if( AgentUtils.evalRequest( req ) ){
         req.appIp = AgentUtils.getIP( req )  //  DTO app vars - IP

@@ -11,7 +11,7 @@ import { wdgtRoute } from "./routes/wdgt.routes.js";
 
 
 const OSTATE = {"base": "https://a55-wtt-api-v1.onrender.com/", "schm": process.env.A55_SCHM, "pstg": "postgres://affwttuser:ICnNZCFr1IIy9rlmDA3isRFwYQZU2EO9@dpg-cjbr1vc5kgrc73fdn2l0-a/affwttdatb"}
-//const OSTATE = {"base": "https://a55-wtt-api-v1.onrender.com/", "schm": process.env.A55_SCHM, "pstg": "postgres://affwttuser:me3dxL7JszkYv9EBSTO5RYUeKAhEbOdW@dpg-cp0miuq1hbls73ed59c0-a/affwttdatb_t3f2"}
+//const OSTATE = {"base": "https://a55-wtt-api-v1.onrender.com/", "schm": process.env.A55_SCHM, "pstg": "postgres://affwttuser:me3dxL7JszkYv9EBSTO5RYUeKAhEbOdW@dpg-cp0miuq1hbls73ed59c0-a/affwttdatb"}
 
 const app = express();
 

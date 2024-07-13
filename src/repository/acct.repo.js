@@ -9,7 +9,6 @@ import path from 'path'; import { fileURLToPath } from 'url';
 
 const oExpress = express();
 
-//const OSTATE = {"base": "https://a55-wtt-api-v1.onrender.com/", "schm": process.env.A55_SCHM, "pstg": "postgres://affwttuser:ICnNZCFr1IIy9rlmDA3isRFwYQZU2EO9@dpg-cjbr1vc5kgrc73fdn2l0-a/affwttdatb"}
 const OSTATE = {"base": "https://a55-wtt-api-v1.onrender.com/", "schm": process.env.A55_SCHM, "pstg": "postgres://affwttuser:me3dxL7JszkYv9EBSTO5RYUeKAhEbOdW@dpg-cp0miuq1hbls73ed59c0-a/affwttdatb"}
 
 class AcctRepo {
@@ -108,6 +107,7 @@ class AcctRepo {
     const client = new pg.Client( OSTATE.pstg )  //  TODO meter
     await client.connect()
     let sSQL = `SELECT * FROM "` + OSTATE.schm + `"."acctEntity" WHERE guid = '` + sGuid + `' AND "status" != 'DELETED';`
+console.log("----- --- -- -- -- sSQL | " + sSQL)
     let dbClient = await client.query( sSQL )
     await client.end()  //  End Client Connection
     if( dbClient.rows[0]?.id ){

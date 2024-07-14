@@ -106,8 +106,9 @@ class AcctRepo {
     let oEnt = {}, oParent = {}, oGrandparent = {}
 console.log("----- --- -- -- -- OSTATE | " , OSTATE)
 
-    const client = new pg.Client( OSTATE.pstg )  //  TODO meter
-console.log("----- --- -- -- -- OSTATE.pstg | " , OSTATE.pstg)
+console.log("----- --- -- -- -- OSTATE.pstg 1 | " , OSTATE.pstg)
+const client = new pg.Client( OSTATE.pstg )  //  TODO meter
+console.log("----- --- -- -- -- OSTATE.pstg 2 | " , OSTATE.pstg)
     await client.connect()
 console.log("----- --- -- -- -- Connected | " , sGuid)
 let sSQL = `SELECT * FROM "` + OSTATE.schm + `"."acctEntity" WHERE guid = '` + sGuid + `' AND "status" != 'DELETED';`

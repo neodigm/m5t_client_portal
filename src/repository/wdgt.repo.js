@@ -10,7 +10,7 @@ import path from 'path'; import { fileURLToPath } from 'url';
 
 const oExpress = express();
 
-const OSTATE = {"base": "https://a55-wtt-api-v1.onrender.com/", "schm": process.env.A55_SCHM, "pstg": "postgres://affwttuser:ICnNZCFr1IIy9rlmDA3isRFwYQZU2EO9@dpg-cjbr1vc5kgrc73fdn2l0-a/affwttdatb"}
+const OSTATE = {"base": "https://a55-wtt-api-v1.onrender.com/", "schm": process.env.A55_SCHM, "pstg": "postgresql://affwttuser:ICnNZCFr1IIy9rlmDA3isRFwYQZU2EO9@dpg-cjbr1vc5kgrc73fdn2l0-a/affwttdatb"}
 
 class WdgtRepo {
     static aWdgtEntity = [];

@@ -9,7 +9,7 @@ import path from 'path'; import { fileURLToPath } from 'url';
 
 const oExpress = express();
 
-//const OSTATE = {"base": "https://a55-wtt-api-v1.onrender.com/", "schm": process.env.A55_SCHM, "pstg": "postgres://affwttuser:me3dxL7JszkYv9EBSTO5RYUeKAhEbOdW@dpg-cp0miuq1hbls73ed59c0-a/affwttdatb"}
+//const OSTATE = {"base": "https://a55-wtt-api-v1.onrender.com/", "schm": process.env.A55_SCHM, "pstg": "postgresql://affwttuser:ICnNZCFr1IIy9rlmDA3isRFwYQZU2EO9@dpg-cjbr1vc5kgrc73fdn2l0-a/affwttdatb"}
 const OSTATE = {"base": "https://a55-wtt-api-v1.onrender.com/", "schm": process.env.A55_SCHM, "pstg": "postgresql://affwttuser:ICnNZCFr1IIy9rlmDA3isRFwYQZU2EO9@dpg-cjbr1vc5kgrc73fdn2l0-a/affwttdatb"}
                                                                                             //INTERNAL postgresql://affwttuser:ICnNZCFr1IIy9rlmDA3isRFwYQZU2EO9@dpg-cjbr1vc5kgrc73fdn2l0-a/affwttdatb
                                                                                             //EXTERNAL postgresql://affwttuser:ICnNZCFr1IIy9rlmDA3isRFwYQZU2EO9@dpg-cjbr1vc5kgrc73fdn2l0-a.oregon-postgres.render.com/affwttdatb

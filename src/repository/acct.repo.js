@@ -107,6 +107,7 @@ class AcctRepo {
 console.log("----- --- -- -- -- OSTATE | " , OSTATE)
 
     const client = new pg.Client( OSTATE.pstg )  //  TODO meter
+console.log("----- --- -- -- -- OSTATE.pstg | " , OSTATE.pstg)
     await client.connect()
 console.log("----- --- -- -- -- Connected | " , sGuid)
 let sSQL = `SELECT * FROM "` + OSTATE.schm + `"."acctEntity" WHERE guid = '` + sGuid + `' AND "status" != 'DELETED';`

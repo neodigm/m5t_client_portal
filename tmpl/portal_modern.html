@@ -776,6 +776,190 @@
             position: relative;
         }
         
+        /* Notification Dropdown Styles */
+        .notification-dropdown {
+            position: relative;
+        }
+        
+        .notification-dropdown .btn {
+            position: relative;
+        }
+        
+        .notification-indicator {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: var(--gradient-accent);
+            color: white;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 0 4px;
+            animation: pulse 2s infinite;
+        }
+        
+        .notification-indicator.hidden {
+            display: none;
+        }
+        
+        .notification-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: var(--space-sm);
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px rgba(52, 73, 94, 0.2);
+            width: 380px;
+            max-height: 500px;
+            display: none;
+            z-index: var(--z-dropdown);
+            border: 1px solid var(--m5-gray-200);
+            overflow: hidden;
+        }
+        
+        .notification-menu.show {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .notification-header {
+            padding: var(--space-md) var(--space-lg);
+            border-bottom: 1px solid var(--m5-gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--m5-gray-50);
+        }
+        
+        .notification-header h3 {
+            margin: 0;
+            font-size: var(--font-size-lg);
+            color: var(--m5-gray-900);
+        }
+        
+        .notification-list {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 350px;
+        }
+        
+        .notification-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-md) var(--space-lg);
+            border-bottom: 1px solid var(--m5-gray-100);
+            transition: background var(--transition-base);
+            position: relative;
+        }
+        
+        .notification-item:hover {
+            background: var(--m5-gray-50);
+        }
+        
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(221, 65, 36, 0.1);
+            color: var(--m5-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .notification-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .notification-content h4 {
+            margin: 0 0 var(--space-xs) 0;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--m5-gray-900);
+        }
+        
+        .notification-content p {
+            margin: 0 0 var(--space-xs) 0;
+            font-size: var(--font-size-sm);
+            color: var(--m5-gray-700);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .notification-time {
+            font-size: var(--font-size-xs);
+            color: var(--m5-gray-500);
+        }
+        
+        .notification-dismiss {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: none;
+            border: none;
+            padding: var(--space-xs);
+            cursor: pointer;
+            color: var(--m5-gray-400);
+            border-radius: var(--radius-sm);
+            opacity: 0;
+            transition: all var(--transition-base);
+        }
+        
+        .notification-item:hover .notification-dismiss {
+            opacity: 1;
+        }
+        
+        .notification-dismiss:hover {
+            background: var(--m5-gray-200);
+            color: var(--m5-gray-700);
+        }
+        
+        .notification-footer {
+            padding: var(--space-sm) var(--space-lg);
+            border-top: 1px solid var(--m5-gray-200);
+            background: var(--m5-gray-50);
+        }
+        
+        .notification-view-all {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            color: var(--m5-primary);
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+            padding: var(--space-sm);
+            border-radius: var(--border-radius);
+            transition: all var(--transition-base);
+        }
+        
+        .notification-view-all:hover {
+            background: var(--m5-gray-100);
+        }
+        
+        .notification-empty {
+            padding: var(--space-2xl);
+            text-align: center;
+            color: var(--m5-gray-500);
+        }
+        
+        .notification-empty .material-symbols-outlined {
+            font-size: 48px;
+            color: var(--m5-gray-300);
+            margin-bottom: var(--space-md);
+        }
+        
         /* Loading States */
         .skeleton {
             background: linear-gradient(90deg, rgba(52, 73, 94, 0.1) 25%, rgba(52, 73, 94, 0.05) 50%, rgba(52, 73, 94, 0.1) 75%);
@@ -813,6 +997,17 @@
             to {
                 opacity: 0;
                 transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(20px);
             }
         }
         
@@ -883,7 +1078,7 @@
             text-align: center;
             transition: all var(--transition-base);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
         
         .program-step::after {
@@ -896,6 +1091,7 @@
             background: radial-gradient(circle at center, transparent 0%, rgba(52, 73, 94, 0.02) 100%);
             opacity: 0;
             transition: opacity var(--transition-base);
+            pointer-events: none;
         }
         
         .program-step:hover::after {
@@ -947,6 +1143,16 @@
         .program-step.active .step-status {
             color: var(--m5-accent);
             font-weight: 700;
+        }
+        
+        .program-step .btn {
+            position: relative;
+            z-index: 10;
+            cursor: pointer;
+        }
+        
+        #configEditBtn {
+            margin-top: 8px;
         }
         
         /* File Management Styles */
@@ -2248,6 +2454,200 @@
             }
         }
         
+        /* Add User Form Styles */
+        .form-section {
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .form-section-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--m5-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .form-section-title .material-symbols-outlined {
+            color: var(--m5-primary);
+            font-size: 24px;
+        }
+        
+        .form-section-subtitle {
+            color: var(--m5-gray-600);
+            margin-bottom: var(--space-lg);
+            font-size: var(--font-size-sm);
+        }
+        
+        .permission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        .permission-card {
+            position: relative;
+            display: block;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--m5-gray-200);
+            background: white;
+            transition: all var(--transition-base);
+            overflow: hidden;
+        }
+        
+        .permission-card:hover {
+            border-color: var(--m5-primary-light);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .permission-card input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .permission-card input[type="checkbox"]:checked + .permission-content {
+            background: var(--primary-light);
+            border-color: var(--m5-primary);
+        }
+        
+        .permission-card input[type="checkbox"]:checked + .permission-content .permission-check {
+            opacity: 1;
+            transform: scale(1);
+            background: var(--m5-primary);
+            color: white;
+        }
+        
+        .permission-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            position: relative;
+            transition: all var(--transition-base);
+        }
+        
+        .permission-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: var(--border-radius);
+            background: var(--m5-gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-base);
+        }
+        
+        .permission-icon .material-symbols-outlined {
+            font-size: 20px;
+            color: var(--m5-primary);
+        }
+        
+        .permission-card:hover .permission-icon {
+            background: var(--m5-primary);
+        }
+        
+        .permission-card:hover .permission-icon .material-symbols-outlined {
+            color: white;
+        }
+        
+        .permission-info {
+            flex: 1;
+        }
+        
+        .permission-info h4 {
+            margin: 0 0 var(--space-xs) 0;
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--m5-gray-800);
+        }
+        
+        .permission-info p {
+            margin: 0;
+            font-size: var(--font-size-sm);
+            color: var(--m5-gray-600);
+            line-height: 1.4;
+        }
+        
+        .permission-check {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--m5-gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all var(--transition-base);
+        }
+        
+        .permission-check .material-symbols-outlined {
+            font-size: 16px;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: flex-end;
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--m5-gray-200);
+        }
+        
+        /* Global form control styles for consistency */
+        .form-control {
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--m5-gray-300);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-family: var(--font-primary);
+            background: white;
+            color: var(--m5-gray-800);
+            transition: all var(--transition-base);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--m5-primary);
+            box-shadow: 0 0 0 3px rgba(52, 73, 94, 0.1);
+        }
+
+        .form-control:disabled {
+            background: var(--m5-gray-100);
+            color: var(--m5-gray-500);
+            cursor: not-allowed;
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        @media (max-width: 768px) {
+            .permission-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column-reverse;
+            }
+            
+            .form-actions button {
+                width: 100%;
+            }
+        }
+        
         /* Additional Modern Effects */
         
         /* Form Input Enhancements */
@@ -2497,6 +2897,455 @@
             font-size: 64px;
             color: var(--m5-gray-300);
             margin-bottom: var(--space-lg);
+        }
+        
+        /* Conversational Lead Magnet Styles */
+        .chat-widget {
+            position: fixed;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+            z-index: 10000;
+        }
+        
+        .chat-widget.popup {
+            bottom: 100px;
+            right: 24px;
+            width: 380px;
+            max-height: 600px;
+        }
+        
+        .chat-widget.slide {
+            top: 50%;
+            right: -380px;
+            width: 380px;
+            max-height: 600px;
+            transform: translateY(-50%);
+            transition: right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .chat-widget.slide.active {
+            right: 0;
+        }
+        
+        .chat-widget.embedded {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .agent-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .agent-info h4 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .agent-info p {
+            margin: 2px 0 0;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        
+        .chat-status {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .chat-messages {
+            padding: 20px;
+            height: 350px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background: #f8fafc;
+        }
+        
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            max-width: 85%;
+        }
+        
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+        
+        .message-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .message.agent .message-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .message.user .message-avatar {
+            background: #e2e8f0;
+            color: #475569;
+        }
+        
+        .message-bubble {
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 15px;
+            line-height: 1.4;
+            position: relative;
+            word-break: break-word;
+        }
+        
+        .message.agent .message-bubble {
+            background: white;
+            color: #1e293b;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .message-time {
+            font-size: 11px;
+            opacity: 0.6;
+            margin-top: 4px;
+            text-align: center;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 0;
+        }
+        
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            background: white;
+            padding: 12px 16px;
+            border-radius: 18px;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #94a3b8;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        
+        .chat-input-area {
+            padding: 16px 20px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .quick-reply {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .quick-reply:hover {
+            background: #e2e8f0;
+            border-color: #cbd5e1;
+        }
+        
+        .chat-input {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .chat-input:focus-within {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .chat-input input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px 16px;
+            font-size: 15px;
+            outline: none;
+            color: #1e293b;
+        }
+        
+        .chat-input input::placeholder {
+            color: #94a3b8;
+        }
+        
+        .send-button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-right: 4px;
+        }
+        
+        .send-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .floating-button {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .floating-button:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5);
+        }
+        
+        .floating-button.pulse {
+            animation: floating-pulse 2s infinite;
+        }
+        
+        @keyframes floating-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .conversation-step {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .form-field {
+            margin-bottom: 16px;
+        }
+        
+        .field-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #374151;
+            font-size: 14px;
+        }
+        
+        .field-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            background: #f9fafb;
+        }
+        
+        .field-input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .action-button {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .action-button.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .action-button.primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .action-button.secondary {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .action-button.secondary:hover {
+            background: #e2e8f0;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            .chat-widget.popup,
+            .chat-widget.slide {
+                width: calc(100vw - 16px);
+                right: 8px;
+                bottom: 80px;
+            }
+            
+            .chat-widget.slide {
+                right: -100vw;
+            }
+            
+            .chat-widget.slide.active {
+                right: 8px;
+            }
+            
+            .floating-button {
+                width: 56px;
+                height: 56px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
         
         .empty-state-title {
@@ -2767,66 +3616,132 @@
         }
         
         .config-tab {
-            flex: 1;
-            padding: var(--space-md) var(--space-lg);
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: var(--font-size-sm);
-            font-weight: 500;
-            color: var(--m5-gray-600);
-            transition: all var(--transition-base);
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: var(--space-sm);
+            padding: var(--space-md) var(--space-lg);
+            border: none;
+            background: transparent;
+            color: var(--m5-gray-600);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border-bottom: 3px solid transparent;
         }
         
         .config-tab:hover {
-            background: rgba(52, 73, 94, 0.05);
-            color: var(--m5-primary);
+            background: rgba(221, 65, 36, 0.05);
+            color: var(--m5-accent);
         }
         
         .config-tab.active {
             background: white;
-            color: var(--m5-primary);
-            font-weight: 600;
-            border-bottom: 3px solid var(--m5-accent);
+            color: var(--m5-accent);
+            border-bottom-color: var(--m5-accent);
         }
         
         .config-content {
-            padding: var(--space-xl);
-            min-height: 600px;
+            padding: var(--space-2xl);
         }
         
+        .config-tab-content {
+            display: none;
+        }
+        
+        .config-tab-content.active {
+            display: block;
+        }
+        
+        /* Template Grid */
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .template-card {
+            border: 2px solid var(--m5-gray-200);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-lg);
+            cursor: pointer;
+            transition: var(--transition-base);
+            background: white;
+        }
+        
+        .template-card:hover {
+            border-color: var(--m5-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .template-card.selected {
+            border-color: var(--m5-accent);
+            background: rgba(221, 65, 36, 0.02);
+        }
+        
+        .template-preview {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: var(--space-md);
+        }
+        
+        .template-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--m5-gray-900);
+        }
+        
+        .template-description {
+            font-size: var(--font-size-sm);
+            color: var(--m5-gray-600);
+            margin-bottom: var(--space-md);
+            line-height: 1.4;
+        }
+        
+        .template-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+        
+        .template-feature {
+            background: var(--m5-gray-100);
+            color: var(--m5-gray-700);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+        }
+        
+        /* Field Builder */
         .field-builder {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
+            gap: var(--space-2xl);
         }
         
         .field-list {
-            background: var(--m5-gray-50);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
         }
         
         .field-item {
-            background: white;
-            border: 1px solid var(--m5-gray-200);
-            border-radius: var(--border-radius);
-            padding: var(--space-md);
-            margin-bottom: var(--space-sm);
-            cursor: grab;
-            transition: all var(--transition-base);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: var(--space-md);
+            border: 1px solid var(--m5-gray-200);
+            border-radius: var(--border-radius);
+            background: white;
+            transition: var(--transition-base);
         }
         
         .field-item:hover {
-            border-color: var(--m5-primary);
-            box-shadow: var(--shadow-sm);
+            border-color: var(--m5-accent);
+            background: rgba(221, 65, 36, 0.02);
         }
         
         .field-item.active {
@@ -2837,26 +3752,25 @@
         .field-info {
             display: flex;
             align-items: center;
-            gap: var(--space-sm);
+            gap: var(--space-md);
         }
         
         .field-type-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--m5-primary);
-            color: white;
-            border-radius: var(--border-radius);
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background: var(--m5-gray-100);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            color: var(--m5-gray-600);
         }
         
         .field-details h4 {
             font-size: var(--font-size-sm);
             font-weight: 600;
-            margin: 0;
-            color: var(--m5-gray-800);
+            margin: 0 0 var(--space-xs) 0;
+            color: var(--m5-gray-900);
         }
         
         .field-details p {
@@ -2865,21 +3779,174 @@
             margin: 0;
         }
         
-        .field-actions {
+        .field-config {
+            border: 1px solid var(--m5-gray-200);
+            border-radius: var(--border-radius-lg);
+            background: white;
+            min-height: 400px;
+        }
+        
+        /* Flow Builder */
+        .flow-builder {
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: var(--space-xl);
+        }
+        
+        .flow-canvas {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-xl);
+            border: 2px dashed var(--m5-gray-300);
+            border-radius: var(--border-radius-lg);
+            background: var(--m5-gray-50);
+        }
+        
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: white;
+            border: 1px solid var(--m5-gray-200);
+            border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 500px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .flow-step-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            text-align: center;
+        }
+        
+        .flow-step-content {
+            flex: 1;
+        }
+        
+        .flow-step-content h4 {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            margin: 0 0 var(--space-xs) 0;
+        }
+        
+        .flow-step-content p {
+            font-size: var(--font-size-xs);
+            color: var(--m5-gray-600);
+            margin: 0;
+        }
+        
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: var(--m5-gray-400);
+        }
+        
+        .flow-sidebar {
+            background: white;
+            border: 1px solid var(--m5-gray-200);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-lg);
+        }
+        
+        .component-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        
+        .component-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            border: 1px solid var(--m5-gray-200);
+            border-radius: var(--border-radius);
+            background: white;
+            cursor: grab;
+            font-size: var(--font-size-sm);
+            transition: var(--transition-base);
+        }
+        
+        .component-item:hover {
+            border-color: var(--m5-accent);
+            background: rgba(221, 65, 36, 0.02);
+        }
+        
+        .component-item:active {
+            cursor: grabbing;
+        }
+        
+        /* Preview Container */
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            padding: var(--space-xl) 0;
+        }
+        
+        .preview-device {
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid var(--m5-gray-300);
+            border-radius: var(--border-radius-lg);
+            background: white;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .preview-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-md) var(--space-lg);
+            background: var(--m5-gray-50);
+            border-bottom: 1px solid var(--m5-gray-200);
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+        }
+        
+        .device-selector {
             display: flex;
             gap: var(--space-xs);
         }
         
-        .field-config {
+        .device-btn {
+            padding: var(--space-xs) var(--space-sm);
+            border: 1px solid var(--m5-gray-300);
             background: white;
-            border: 1px solid var(--m5-gray-200);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            height: fit-content;
-            position: sticky;
-            top: var(--space-lg);
+            color: var(--m5-gray-600);
+            font-size: var(--font-size-xs);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-base);
         }
         
+        .device-btn:hover {
+            border-color: var(--m5-accent);
+            color: var(--m5-accent);
+        }
+        
+        .device-btn.active {
+            background: var(--m5-accent);
+            color: white;
+            border-color: var(--m5-accent);
+        }
+        
+        .preview-content {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .form-factor-selector {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        /* Form Elements */
         .form-group {
             margin-bottom: var(--space-lg);
         }
@@ -2892,209 +3959,42 @@
             margin-bottom: var(--space-sm);
         }
         
-        .form-input, .form-select, .form-textarea {
+        .form-input,
+        .form-select {
             width: 100%;
             padding: var(--space-sm) var(--space-md);
             border: 1px solid var(--m5-gray-300);
             border-radius: var(--border-radius);
             font-size: var(--font-size-sm);
-            transition: border-color var(--transition-base);
+            background: white;
+            transition: var(--transition-base);
         }
         
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
+        .form-input:focus,
+        .form-select:focus {
+            border-color: var(--m5-accent);
             outline: none;
-            border-color: var(--m5-primary);
-            box-shadow: 0 0 0 3px rgba(52, 73, 94, 0.1);
-        }
-        
-        .form-textarea {
-            min-height: 100px;
-            resize: vertical;
+            box-shadow: 0 0 0 3px rgba(221, 65, 36, 0.1);
         }
         
         .checkbox-group {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: var(--space-sm);
         }
         
         .checkbox-item {
             display: flex;
             align-items: center;
-            gap: var(--space-xs);
-            padding: var(--space-xs) var(--space-sm);
-            background: var(--m5-gray-50);
-            border-radius: var(--border-radius);
+            gap: var(--space-sm);
             font-size: var(--font-size-sm);
-        }
-        
-        .flow-builder {
-            background: var(--m5-gray-50);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            min-height: 400px;
-        }
-        
-        .flow-step {
-            background: white;
-            border: 2px solid var(--m5-gray-200);
-            border-radius: var(--border-radius);
-            padding: var(--space-md);
-            margin-bottom: var(--space-md);
-            position: relative;
             cursor: pointer;
-            transition: all var(--transition-base);
         }
         
-        .flow-step:hover {
-            border-color: var(--m5-primary);
+        .checkbox-item input {
+            margin: 0;
         }
         
-        .flow-step.active {
-            border-color: var(--m5-accent);
-            background: rgba(221, 65, 36, 0.05);
-        }
-        
-        .flow-step-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .flow-step-title {
-            font-weight: 600;
-            color: var(--m5-gray-800);
-        }
-        
-        .flow-step-type {
-            font-size: var(--font-size-xs);
-            color: var(--m5-gray-600);
-            background: var(--m5-gray-100);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: var(--border-radius);
-        }
-        
-        .preview-container {
-            background: var(--m5-gray-100);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            height: 500px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .preview-device {
-            background: white;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-lg);
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .preview-toolbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: var(--space-md);
-            border-bottom: 1px solid var(--m5-gray-200);
-            background: var(--m5-gray-50);
-        }
-        
-        .device-selector {
-            display: flex;
-            gap: var(--space-xs);
-        }
-        
-        .device-btn {
-            padding: var(--space-xs) var(--space-sm);
-            border: 1px solid var(--m5-gray-300);
-            background: white;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-size: var(--font-size-xs);
-            transition: all var(--transition-base);
-        }
-        
-        .device-btn.active {
-            background: var(--m5-primary);
-            color: white;
-            border-color: var(--m5-primary);
-        }
-        
-        .preview-content {
-            padding: var(--space-lg);
-            height: calc(100% - 60px);
-            overflow-y: auto;
-        }
-        
-        .template-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-lg);
-        }
-        
-        .template-card {
-            background: white;
-            border: 2px solid var(--m5-gray-200);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            cursor: pointer;
-            transition: all var(--transition-base);
-        }
-        
-        .template-card:hover {
-            border-color: var(--m5-primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .template-card.selected {
-            border-color: var(--m5-accent);
-            background: rgba(221, 65, 36, 0.05);
-        }
-        
-        .template-preview {
-            height: 150px;
-            background: var(--m5-gray-100);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: var(--m5-gray-400);
-        }
-        
-        .template-info {
-            padding: var(--space-md);
-        }
-        
-        .template-title {
-            font-weight: 600;
-            margin-bottom: var(--space-xs);
-        }
-        
-        .template-description {
-            font-size: var(--font-size-sm);
-            color: var(--m5-gray-600);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .template-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-xs);
-        }
-        
-        .template-feature {
-            font-size: var(--font-size-xs);
-            background: var(--m5-gray-100);
-            color: var(--m5-gray-700);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: var(--border-radius);
-        }
-
         /* Print Styles */
         @media print {
             .navbar,
@@ -3146,16 +4046,72 @@
                 </nav>
                 
                 <div class="navbar-actions">
-                    <button class="btn btn-ghost">
-                        <span class="material-symbols-outlined">notifications</span>
-                    </button>
+                    <div class="notification-dropdown">
+                        <button class="btn btn-ghost" id="notificationBtn" onclick="app.toggleNotifications(event)">
+                            <span class="material-symbols-outlined">notifications</span>
+                            <span class="notification-indicator" id="notificationIndicator">3</span>
+                        </button>
+                        <div class="notification-menu" id="notificationMenu">
+                            <div class="notification-header">
+                                <h3>Notifications</h3>
+                                <button class="btn btn-ghost btn-sm" onclick="app.clearAllNotifications()">Clear All</button>
+                            </div>
+                            <div class="notification-list" id="notificationList">
+                                <div class="notification-item" data-id="1">
+                                    <div class="notification-icon">
+                                        <span class="material-symbols-outlined">task_alt</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h4>Deliverable Ready for Review</h4>
+                                        <p>ACME Rentals Summer Promotion Ads</p>
+                                        <span class="notification-time">Today, 10:30 AM</span>
+                                    </div>
+                                    <button class="notification-dismiss" onclick="app.dismissNotification(1)">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                </div>
+                                <div class="notification-item" data-id="2">
+                                    <div class="notification-icon">
+                                        <span class="material-symbols-outlined">task_alt</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h4>Deliverable Ready for Review</h4>
+                                        <p>August Property Showcase Content</p>
+                                        <span class="notification-time">Yesterday, 3:45 PM</span>
+                                    </div>
+                                    <button class="notification-dismiss" onclick="app.dismissNotification(2)">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                </div>
+                                <div class="notification-item" data-id="3">
+                                    <div class="notification-icon">
+                                        <span class="material-symbols-outlined">task_alt</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h4>Deliverable Ready for Review</h4>
+                                        <p>Luxury Apartment Landing Page</p>
+                                        <span class="notification-time">2 days ago</span>
+                                    </div>
+                                    <button class="notification-dismiss" onclick="app.dismissNotification(3)">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#analytics" class="notification-view-all" onclick="app.navigate('analytics'); app.closeNotifications();">
+                                    View All Deliverables
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="user-dropdown">
                         <button class="user-dropdown-toggle" onclick="if(app) app.toggleUserDropdown(event)">
                             <span id="userName">Jay Hunter</span>
                             <span class="material-symbols-outlined">expand_more</span>
                         </button>
                         <div class="user-dropdown-menu" id="userDropdownMenu">
-                            <a href="#add-users" class="dropdown-item">
+                            <a href="#add-users" class="dropdown-item" onclick="app.navigate('add-users'); app.toggleUserDropdown(event);">
                                 <span class="material-symbols-outlined">person_add</span>
                                 <span>Add Users</span>
                             </a>
@@ -3209,7 +4165,7 @@
                 <div class="sidebar-section">
                     <div class="sidebar-title">Recent Activity</div>
                     <div class="text-small text-muted" style="padding: var(--space-sm);">
-                        <p class="mb-2">• Campaign "Summer Sale" launched</p>
+                        <p class="mb-2">• Campaign "Luxury Apartment Ads" launched</p>
                         <p class="mb-2">• 15 new leads captured</p>
                         <p class="mb-2">• Invoice #1234 paid</p>
                     </div>
@@ -3503,6 +4459,12 @@
             constructor() {
                 this.currentPage = null;
                 this.viewContainer = document.getElementById('view-container');
+                this.chartInstances = {}; // Store chart instances for cleanup
+                this.notifications = [
+                    { id: 1, title: 'Deliverable Ready for Review', message: 'ACME Rentals Summer Promotion Ads', time: 'Today, 10:30 AM' },
+                    { id: 2, title: 'Deliverable Ready for Review', message: 'August Property Showcase Content', time: 'Yesterday, 3:45 PM' },
+                    { id: 3, title: 'Deliverable Ready for Review', message: 'Luxury Apartment Landing Page', time: '2 days ago' }
+                ];
                 this.init();
             }
             
@@ -3513,12 +4475,18 @@
                 // Set up routing
                 this.setupRouting();
                 
+                // Set up global event delegation for dynamic buttons
+                this.setupGlobalEventDelegation();
+                
                 // Load initial page
                 const initialPage = window.location.hash.slice(1) || 'dashboard';
                 this.navigate(initialPage);
                 
                 // Initialize user info
                 this.loadUserInfo();
+                
+                // Initialize notification count
+                this.updateNotificationCount();
             }
             
             setupNavigation() {
@@ -3539,6 +4507,30 @@
                 window.addEventListener('popstate', () => {
                     const page = window.location.hash.slice(1) || 'dashboard';
                     this.navigate(page, false);
+                });
+            }
+            
+            setupGlobalEventDelegation() {
+                // Handle clicks on dynamically loaded content
+                document.addEventListener('click', (e) => {
+                    // Check if clicked element or its parent is the config edit button
+                    const configBtn = e.target.closest('#configEditBtn');
+                    if (configBtn) {
+                        console.log('Config edit button clicked via delegation');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Try direct DOM manipulation as a test
+                        const modal = document.getElementById('configurationModal');
+                        console.log('Direct modal lookup:', modal);
+                        if (modal) {
+                            modal.style.display = 'flex';
+                            document.body.style.overflow = 'hidden';
+                            console.log('Modal should be visible now');
+                        } else {
+                            console.error('Modal not found in DOM');
+                        }
+                    }
                 });
             }
             
@@ -3577,6 +4569,9 @@
             }
             
             loadPage(page) {
+                // Clean up any existing charts before loading new page
+                this.cleanupCharts();
+                
                 // Add leaving animation
                 if (this.viewContainer.firstElementChild) {
                     this.viewContainer.firstElementChild.classList.add('view-leave');
@@ -3594,12 +4589,22 @@
                 }, 200);
             }
             
+            cleanupCharts() {
+                // Destroy all chart instances
+                Object.keys(this.chartInstances).forEach(key => {
+                    if (this.chartInstances[key]) {
+                        this.chartInstances[key].destroy();
+                        delete this.chartInstances[key];
+                    }
+                });
+            }
+            
             loadUserInfo() {
                 // In a real app, this would come from an API
                 const user = {
                     name: 'Jay Hunter',
-                    email: 'jay@example.com',
-                    company: 'ABC Marketing'
+                    email: 'jay@acmerentals.com',
+                    company: 'ACME Rentals'
                 };
                 
                 document.getElementById('userName').textContent = user.name;
@@ -3674,7 +4679,7 @@
                     
                     // Set preview based on file type
                     if (fileType === 'image') {
-                        filePreview.innerHTML = `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23e0e0e0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial, sans-serif' font-size='24' fill='%23666' text-anchor='middle' dy='.3em'%3ESummer Campaign Hero%3C/text%3E%3C/svg%3E" alt="${fileName}">`;
+                        filePreview.innerHTML = `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23e0e0e0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial, sans-serif' font-size='24' fill='%23666' text-anchor='middle' dy='.3em'%3EACME Rentals Hero Ad%3C/text%3E%3C/svg%3E" alt="${fileName}">`;
                     } else if (fileType === 'pdf') {
                         filePreview.innerHTML = '<div class="preview-icon"><span class="material-symbols-outlined">description</span><p class="text-muted mt-3">PDF Preview</p></div>';
                     } else if (fileType === 'doc') {
@@ -3735,6 +4740,77 @@
                     this.closeMessageModal();
                     this.showNotification('Message sent successfully!', 'success');
                 }, 1000);
+            }
+
+            async handleAddUser(event) {
+                event.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(event.target);
+                const firstName = formData.get('firstName').trim();
+                const lastName = formData.get('lastName').trim();
+                const email = formData.get('email').trim();
+                const role = formData.get('role');
+                const permissions = formData.getAll('permissions');
+                
+                // Basic validation
+                if (!firstName || !lastName || !email || !role) {
+                    this.showNotification('Please fill in all required fields', 'error');
+                    return;
+                }
+                
+                if (!email.includes('@')) {
+                    this.showNotification('Please enter a valid email address', 'error');
+                    return;
+                }
+                
+                if (permissions.length === 0) {
+                    this.showNotification('Please select at least one permission', 'error');
+                    return;
+                }
+                
+                // Show loading state
+                const submitButton = event.target.querySelector('button[type="submit"]');
+                const originalText = submitButton.innerHTML;
+                submitButton.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Creating User...';
+                submitButton.disabled = true;
+                
+                try {
+                    // In a real implementation, this would make an API call to create the user
+                    // For now, we'll simulate the API call
+                    const userData = {
+                        firstName,
+                        lastName,
+                        email,
+                        role,
+                        permissions,
+                        created: new Date().toISOString()
+                    };
+                    
+                    console.log('Creating user:', userData);
+                    
+                    // Simulate API delay
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    // Show success message and navigate back
+                    this.showNotification(`User ${firstName} ${lastName} created successfully!`, 'success');
+                    
+                    // Reset form
+                    event.target.reset();
+                    
+                    // Navigate to dashboard after short delay
+                    setTimeout(() => {
+                        this.navigate('dashboard');
+                    }, 2000);
+                    
+                } catch (error) {
+                    console.error('Error creating user:', error);
+                    this.showNotification('Failed to create user. Please try again.', 'error');
+                } finally {
+                    // Restore button state
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+                }
             }
 
             showNotification(message, type = 'info') {
@@ -4214,14 +5290,115 @@
                 }
             }
             
+            // Notification Methods
+            toggleNotifications(event) {
+                event.stopPropagation();
+                const menu = document.getElementById('notificationMenu');
+                const isShowing = menu.classList.contains('show');
+                
+                if (!isShowing) {
+                    menu.classList.add('show');
+                    // Add click outside listener
+                    document.addEventListener('click', this.handleNotificationOutsideClick);
+                } else {
+                    this.closeNotifications();
+                }
+            }
+            
+            closeNotifications() {
+                const menu = document.getElementById('notificationMenu');
+                menu.classList.remove('show');
+                document.removeEventListener('click', this.handleNotificationOutsideClick);
+            }
+            
+            handleNotificationOutsideClick = (e) => {
+                const dropdown = document.querySelector('.notification-dropdown');
+                if (!dropdown.contains(e.target)) {
+                    this.closeNotifications();
+                }
+            }
+            
+            dismissNotification(id) {
+                // Remove from notifications array
+                this.notifications = this.notifications.filter(n => n.id !== id);
+                
+                // Remove from DOM
+                const item = document.querySelector(`.notification-item[data-id="${id}"]`);
+                if (item) {
+                    item.style.animation = 'fadeOut 0.3s ease-out';
+                    setTimeout(() => {
+                        item.remove();
+                        this.updateNotificationCount();
+                    }, 300);
+                }
+            }
+            
+            clearAllNotifications() {
+                // Clear all notifications
+                this.notifications = [];
+                
+                // Update UI
+                const list = document.getElementById('notificationList');
+                list.innerHTML = `
+                    <div class="notification-empty">
+                        <span class="material-symbols-outlined">notifications_none</span>
+                        <p>No new notifications</p>
+                    </div>
+                `;
+                
+                this.updateNotificationCount();
+            }
+            
+            updateNotificationCount() {
+                const indicator = document.getElementById('notificationIndicator');
+                const badge = document.querySelector('.notification-badge');
+                
+                if (this.notifications.length > 0) {
+                    indicator.textContent = this.notifications.length;
+                    indicator.classList.remove('hidden');
+                    if (badge) {
+                        badge.style.display = 'flex';
+                    }
+                } else {
+                    indicator.classList.add('hidden');
+                    if (badge) {
+                        badge.style.display = 'none';
+                    }
+                }
+            }
+            
             // Configuration Modal Methods
             showConfigurationModal() {
-                const modal = document.getElementById('configurationModal');
+                console.log('showConfigurationModal called');
+                console.log('window.app:', window.app);
+                console.log('this:', this);
+                
+                // Try multiple ways to find the modal
+                let modal = document.getElementById('configurationModal');
+                console.log('Modal by getElementById:', modal);
+                
+                if (!modal) {
+                    modal = document.querySelector('#configurationModal');
+                    console.log('Modal by querySelector:', modal);
+                }
+                
                 if (!modal) {
                     console.error('Configuration modal not found');
+                    console.log('All elements with popup-overlay class:', document.querySelectorAll('.popup-overlay'));
                     return;
                 }
+                
+                console.log('Modal element:', modal);
+                console.log('Current display:', modal.style.display);
+                console.log('Current classList:', modal.classList.toString());
+                
+                // Remove display none and add flex
+                modal.style.removeProperty('display');
                 modal.style.display = 'flex';
+                
+                console.log('After setting display:', modal.style.display);
+                console.log('Computed style:', window.getComputedStyle(modal).display);
+                
                 document.body.style.overflow = 'hidden';
             }
             
@@ -4311,8 +5488,8 @@
                     previewElement.innerHTML = `
                         <div>
                             <span class="material-symbols-outlined" style="font-size: 64px; color: var(--m5-gray-500);">image</span>
-                            <p class="text-muted" style="margin-top: var(--space-md);">Summer Campaign Ad Set</p>
-                            <p class="text-small text-muted">3 image variations + 2 video ads</p>
+                            <p class="text-muted" style="margin-top: var(--space-md);">ACME Rentals Promotion Ads</p>
+                            <p class="text-small text-muted">3 property showcase ads + 2 video tours</p>
                         </div>
                     `;
                 } else if (type === 'content-calendar') {
@@ -4327,8 +5504,8 @@
                     previewElement.innerHTML = `
                         <div>
                             <span class="material-symbols-outlined" style="font-size: 64px; color: var(--m5-gray-500);">web</span>
-                            <p class="text-muted" style="margin-top: var(--space-md);">Rental Property Landing Page</p>
-                            <p class="text-small text-muted">Mobile responsive design with lead capture</p>
+                            <p class="text-muted" style="margin-top: var(--space-md);">Luxury Apartment Landing Page</p>
+                            <p class="text-small text-muted">Mobile responsive with virtual tour integration</p>
                         </div>
                     `;
                 }
@@ -4582,219 +5759,257 @@
             }
             
             addField(fieldType) {
-                // Show field configuration for the selected field type
-                const fieldConfig = this.getFieldConfig(fieldType);
-                document.getElementById('fieldConfigContent').innerHTML = fieldConfig;
+                console.log(`Adding field of type: ${fieldType}`);
                 
-                // Mark field as active
-                document.querySelectorAll('.field-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                document.querySelector(`[data-field="${fieldType}"]`).classList.add('active');
-            }
-            
-            getFieldConfig(fieldType) {
-                const configs = {
-                    text: `
+                // Show field configuration
+                const configContent = document.getElementById('fieldConfigContent');
+                if (configContent) {
+                    configContent.innerHTML = `
                         <div class="form-group">
                             <label class="form-label">Field Label</label>
-                            <input type="text" class="form-input" placeholder="Enter field label" value="Full Name">
+                            <input type="text" class="form-input" placeholder="Enter field label" value="${this.getDefaultLabel(fieldType)}">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Placeholder Text</label>
-                            <input type="text" class="form-input" placeholder="Enter placeholder" value="Enter your full name">
+                            <label class="form-label">Field Name</label>
+                            <input type="text" class="form-input" placeholder="Enter field name" value="${fieldType}_${Date.now()}">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Validation</label>
-                            <div class="checkbox-group" style="flex-direction: column; align-items: flex-start;">
-                                <label class="checkbox-item">
-                                    <input type="checkbox" checked> Required field
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox"> Minimum length validation
-                                </label>
-                            </div>
+                            <label class="checkbox-item">
+                                <input type="checkbox" ${fieldType === 'email' || fieldType === 'phone' ? 'checked' : ''}>
+                                Required Field
+                            </label>
                         </div>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: var(--space-md);">
-                            Add to Conversation
-                        </button>
-                    `,
-                    select: `
-                        <div class="form-group">
-                            <label class="form-label">Question Text</label>
-                            <textarea class="form-textarea" placeholder="Enter question">What's your budget range?</textarea>
+                        ${this.getFieldSpecificConfig(fieldType)}
+                        <div class="form-actions">
+                            <button class="btn btn-secondary btn-sm">Cancel</button>
+                            <button class="btn btn-primary btn-sm">Add Field</button>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Options (one per line)</label>
-                            <textarea class="form-textarea" placeholder="Enter options">Under $200K
-$200K-$500K
-$500K-$1M
-$1M+
-Not sure yet</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Display Style</label>
-                            <select class="form-select">
-                                <option>Chat buttons</option>
-                                <option>Dropdown</option>
-                                <option>Radio buttons</option>
-                            </select>
-                        </div>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: var(--space-md);">
-                            Add to Conversation
-                        </button>
-                    `,
-                    email: `
-                        <div class="form-group">
-                            <label class="form-label">Field Label</label>
-                            <input type="text" class="form-input" value="Email Address">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Validation Message</label>
-                            <input type="text" class="form-input" value="Please enter a valid email address">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Auto-complete</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-item">
-                                    <input type="checkbox" checked> Enable email auto-complete
-                                </label>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: var(--space-md);">
-                            Add to Conversation
-                        </button>
-                    `,
-                    phone: `
-                        <div class="form-group">
-                            <label class="form-label">Field Label</label>
-                            <input type="text" class="form-input" value="Phone Number">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Format</label>
-                            <select class="form-select">
-                                <option>US Format: (555) 123-4567</option>
-                                <option>International: +1 555 123 4567</option>
-                                <option>Simple: 555-123-4567</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">SMS Opt-in</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-item">
-                                    <input type="checkbox"> Include SMS consent checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: var(--space-md);">
-                            Add to Conversation
-                        </button>
-                    `,
-                    range: `
-                        <div class="form-group">
-                            <label class="form-label">Question Text</label>
-                            <input type="text" class="form-input" value="What's your budget range?">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Range Settings</label>
-                            <div class="grid grid-cols-2" style="gap: var(--space-sm);">
-                                <input type="number" class="form-input" placeholder="Min value" value="100000">
-                                <input type="number" class="form-input" placeholder="Max value" value="2000000">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Display Format</label>
-                            <select class="form-select">
-                                <option>Currency ($)</option>
-                                <option>Number</option>
-                                <option>Percentage (%)</option>
-                            </select>
-                        </div>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: var(--space-md);">
-                            Add to Conversation
-                        </button>
-                    `
-                };
-                
-                return configs[fieldType] || '<p>Field configuration not available</p>';
-            }
-            
-            previewFormFactor(formFactor) {
-                // Update active form factor button
-                document.querySelectorAll('.device-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                event.target.classList.add('active');
-                
-                // Update preview
-                const toolbar = document.querySelector('.preview-toolbar div');
-                toolbar.textContent = `Preview: ${formFactor.charAt(0).toUpperCase() + formFactor.slice(1)} Form`;
-            }
-            
-            saveLeadMagnet() {
-                // Mock save functionality
-                const notification = document.createElement('div');
-                notification.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: var(--m5-success);
-                    color: white;
-                    padding: var(--space-md) var(--space-lg);
-                    border-radius: var(--border-radius);
-                    box-shadow: var(--shadow-lg);
-                    z-index: 10000;
-                    animation: slideInRight 0.3s ease-out;
-                `;
-                notification.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: var(--space-sm);">
-                        <span class="material-symbols-outlined">check_circle</span>
-                        <span>Lead magnet configuration saved successfully!</span>
-                    </div>
-                `;
-                
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    notification.remove();
-                }, 3000);
-            }
-            
-            copyIntegrationCode() {
-                const codeElement = document.querySelector('.form-textarea[readonly]');
-                if (codeElement) {
-                    navigator.clipboard.writeText(codeElement.value).then(() => {
-                        // Show success feedback
-                        const btn = event.target.closest('button');
-                        const originalHTML = btn.innerHTML;
-                        btn.innerHTML = '<span class="material-symbols-outlined">check</span> Copied!';
-                        btn.classList.add('btn-success');
-                        
-                        setTimeout(() => {
-                            btn.innerHTML = originalHTML;
-                            btn.classList.remove('btn-success');
-                        }, 2000);
-                    });
+                    `;
                 }
             }
             
-            testIntegration() {
-                // Mock integration test
-                const btn = event.target.closest('button');
-                const originalHTML = btn.innerHTML;
-                btn.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Testing...';
-                btn.disabled = true;
+            getDefaultLabel(fieldType) {
+                const labels = {
+                    'text': 'Text Input',
+                    'select': 'Choose Option',
+                    'email': 'Email Address',
+                    'phone': 'Phone Number',
+                    'range': 'Budget Range',
+                    'number': 'Number',
+                    'textarea': 'Message',
+                    'date': 'Date',
+                    'checkbox': 'Select All That Apply',
+                    'company': 'Company Name',
+                    'industry': 'Industry',
+                    'url': 'Website URL'
+                };
+                return labels[fieldType] || 'Field Label';
+            }
+            
+            getFieldSpecificConfig(fieldType) {
+                switch (fieldType) {
+                    case 'select':
+                    case 'checkbox':
+                        return `
+                            <div class="form-group">
+                                <label class="form-label">Options (one per line)</label>
+                                <textarea class="form-input" rows="4" placeholder="Option 1\nOption 2\nOption 3"></textarea>
+                            </div>
+                        `;
+                    case 'industry':
+                        return `
+                            <div class="form-group">
+                                <label class="form-label">Industry Options (one per line)</label>
+                                <textarea class="form-input" rows="6" placeholder="Technology\nHealthcare\nFinance\nReal Estate\nEducation\nManufacturing\nRetail\nOther"></textarea>
+                            </div>
+                        `;
+                    case 'range':
+                        return `
+                            <div class="form-group">
+                                <label class="form-label">Range Configuration</label>
+                                <div class="grid grid-cols-2" style="gap: var(--space-sm);">
+                                    <input type="number" class="form-input" placeholder="Min Value" value="0">
+                                    <input type="number" class="form-input" placeholder="Max Value" value="100">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Range Label (e.g., Budget, Size, etc.)</label>
+                                <input type="text" class="form-input" placeholder="Budget" value="Budget">
+                            </div>
+                        `;
+                    case 'textarea':
+                        return `
+                            <div class="form-group">
+                                <label class="form-label">Rows</label>
+                                <input type="number" class="form-input" value="4" min="2" max="10">
+                            </div>
+                        `;
+                    case 'url':
+                        return `
+                            <div class="form-group">
+                                <label class="form-label">URL Placeholder</label>
+                                <input type="text" class="form-input" placeholder="https://example.com" value="https://example.com">
+                            </div>
+                        `;
+                    default:
+                        return '';
+                }
+            }
+            
+            saveLeadMagnet() {
+                console.log('Saving lead magnet configuration...');
                 
+                // Show success message
+                this.showNotification('Lead magnet configuration saved successfully!', 'success');
+                
+                // In a real implementation, this would save to the backend
                 setTimeout(() => {
-                    btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Test Passed!';
-                    btn.classList.add('btn-success');
-                    
-                    setTimeout(() => {
-                        btn.innerHTML = originalHTML;
-                        btn.classList.remove('btn-success');
-                        btn.disabled = false;
-                    }, 2000);
-                }, 1500);
+                    console.log('Configuration saved to backend');
+                }, 1000);
+            }
+            
+            switchPreviewDevice(device) {
+                document.querySelectorAll('.device-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector(`[onclick="app.switchPreviewDevice('${device}')"]`).classList.add('active');
+                
+                const previewContent = document.querySelector('.preview-content');
+                if (previewContent) {
+                    if (device === 'mobile') {
+                        previewContent.style.maxWidth = '375px';
+                        previewContent.style.margin = '0 auto';
+                    } else {
+                        previewContent.style.maxWidth = 'none';
+                        previewContent.style.margin = '0';
+                    }
+                }
+            }
+            
+            previewFormFactor(formFactor) {
+                console.log(`Previewing form factor: ${formFactor}`);
+                
+                const previewContent = document.querySelector('.preview-content');
+                if (!previewContent) return;
+                
+                let demoContent = '';
+                
+                switch (formFactor) {
+                    case 'popup':
+                        demoContent = `
+                            <div class="chat-widget popup" style="position: relative; bottom: auto; right: auto; margin: 20px auto;">
+                                <div class="chat-header">
+                                    <div class="agent-avatar">🤖</div>
+                                    <div class="agent-info">
+                                        <h4>AI Assistant</h4>
+                                        <p>Here to help you</p>
+                                    </div>
+                                    <div class="chat-status">
+                                        <div class="status-dot"></div>
+                                        Online
+                                    </div>
+                                </div>
+                                <div class="chat-messages">
+                                    <div class="message agent">
+                                        <div class="message-avatar">AI</div>
+                                        <div class="message-bubble">Hi! I'm here to help you find the perfect solution for your needs. What brings you here today?</div>
+                                    </div>
+                                    <div class="typing-indicator">
+                                        <div class="message-avatar">AI</div>
+                                        <div class="typing-dots">
+                                            <div class="typing-dot"></div>
+                                            <div class="typing-dot"></div>
+                                            <div class="typing-dot"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-input-area">
+                                    <div class="quick-replies">
+                                        <div class="quick-reply">Get started</div>
+                                        <div class="quick-reply">Learn more</div>
+                                    </div>
+                                    <div class="chat-input">
+                                        <input type="text" placeholder="Type your message...">
+                                        <button class="send-button">
+                                            <span class="material-symbols-outlined">send</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'slide':
+                        demoContent = `
+                            <div class="chat-widget slide active" style="position: relative; top: auto; right: auto; transform: none; margin: 20px auto;">
+                                <div class="chat-header">
+                                    <div class="agent-avatar">💬</div>
+                                    <div class="agent-info">
+                                        <h4>Quick Chat</h4>
+                                        <p>Slide-in assistant</p>
+                                    </div>
+                                </div>
+                                <div class="chat-messages">
+                                    <div class="message agent">
+                                        <div class="message-avatar">AI</div>
+                                        <div class="message-bubble">I noticed you're browsing our services. Can I help you find what you're looking for?</div>
+                                    </div>
+                                </div>
+                                <div class="chat-input-area">
+                                    <div class="quick-replies">
+                                        <div class="quick-reply">Yes, help me</div>
+                                        <div class="quick-reply">Tell me more</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'embedded':
+                        demoContent = `
+                            <div class="chat-widget embedded">
+                                <div class="chat-header">
+                                    <div class="agent-avatar">📊</div>
+                                    <div class="agent-info">
+                                        <h4>Smart Assistant</h4>
+                                        <p>Get personalized recommendations</p>
+                                    </div>
+                                </div>
+                                <div class="chat-messages">
+                                    <div class="message agent">
+                                        <div class="message-avatar">AI</div>
+                                        <div class="message-bubble">Welcome! I'll help you get a customized analysis. Let's start with a few quick questions.</div>
+                                    </div>
+                                    <div class="conversation-step">
+                                        <div class="step-header">
+                                            <div class="step-icon">1</div>
+                                            <div class="step-title">Tell us about your needs</div>
+                                        </div>
+                                        <div class="action-buttons">
+                                            <button class="action-button primary">Get Started</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'floating':
+                        demoContent = `
+                            <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                                <div class="floating-button pulse">
+                                    💬
+                                </div>
+                                <div style="text-align: center; color: #64748b; font-size: 14px;">
+                                    <p style="margin: 0;">Click to start conversation</p>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                }
+                
+                previewContent.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; padding: var(--space-2xl); min-height: 400px;">
+                        ${demoContent}
+                    </div>
+                `;
             }
             
             // Page definitions
@@ -4804,7 +6019,7 @@ Not sure yet</textarea>
                         <div class="view">
                             <div class="page-header">
                                 <h1 class="page-title">Welcome back!</h1>
-                                <p class="page-subtitle">Here's what's happening with your marketing today.</p>
+                                <p class="page-subtitle">Here's how ACME Rentals is performing today.</p>
                             </div>
                             
                             <div class="grid grid-cols-5 mb-5">
@@ -4878,28 +6093,28 @@ Not sure yet</textarea>
                                 
                                 <div class="card">
                                     <div class="card-header">
-                                        <h2 class="card-title">Your Marketing Services</h2>
+                                        <h2 class="card-title">ACME Rentals Marketing Services</h2>
                                     </div>
                                     <div class="card-body">
                                         <div style="display: flex; flex-direction: column; gap: var(--space-md);">
                                             <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-sm); background: var(--m5-gray-50); border-radius: var(--border-radius);">
                                                 <div style="display: flex; align-items: center; gap: var(--space-sm);">
                                                     <span class="material-symbols-outlined" style="color: var(--m5-success);">check_circle</span>
-                                                    <span>Strategic Growth Engine</span>
+                                                    <span>Property Marketing Engine</span>
                                                 </div>
                                                 <span class="badge badge-success">Active</span>
                                             </div>
                                             <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-sm); background: var(--m5-gray-50); border-radius: var(--border-radius);">
                                                 <div style="display: flex; align-items: center; gap: var(--space-sm);">
                                                     <span class="material-symbols-outlined" style="color: var(--m5-success);">check_circle</span>
-                                                    <span>Market Visibility Optimizer</span>
+                                                    <span>Rental Lead Generator</span>
                                                 </div>
                                                 <span class="badge badge-success">Active</span>
                                             </div>
                                             <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-sm); background: var(--m5-gray-50); border-radius: var(--border-radius);">
                                                 <div style="display: flex; align-items: center; gap: var(--space-sm);">
                                                     <span class="material-symbols-outlined" style="color: var(--m5-success);">check_circle</span>
-                                                    <span>Brand Storytelling Suite</span>
+                                                    <span>Property Showcase Suite</span>
                                                 </div>
                                                 <span class="badge badge-success">Active</span>
                                             </div>
@@ -4936,17 +6151,17 @@ Not sure yet</textarea>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>Homepage Contact</td>
+                                                        <td>Property Inquiry Form</td>
                                                         <td>12</td>
                                                         <td>45</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Free Consultation</td>
+                                                        <td>Virtual Tour Request</td>
                                                         <td>8</td>
                                                         <td>32</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Exit Intent</td>
+                                                        <td>Rental Application</td>
                                                         <td>5</td>
                                                         <td>19</td>
                                                     </tr>
@@ -5014,7 +6229,13 @@ Not sure yet</textarea>
                         // Initialize chart
                         const ctx = document.getElementById('leadChart');
                         if (ctx && window.Chart) {
-                            new Chart(ctx, {
+                            // Destroy existing chart if it exists
+                            if (app.chartInstances.leadChart) {
+                                app.chartInstances.leadChart.destroy();
+                            }
+                            
+                            // Create new chart and store reference
+                            app.chartInstances.leadChart = new Chart(ctx, {
                                 type: 'line',
                                 data: {
                                     labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -5086,7 +6307,7 @@ Not sure yet</textarea>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><strong>Summer Sale 2024</strong></td>
+                                                    <td><strong>Luxury Apartment Showcase 2024</strong></td>
                                                     <td><span class="badge badge-success">Active</span></td>
                                                     <td>$5,000</td>
                                                     <td>$3,250</td>
@@ -5096,7 +6317,7 @@ Not sure yet</textarea>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><strong>Back to School</strong></td>
+                                                    <td><strong>Fall Move-In Special</strong></td>
                                                     <td><span class="badge badge-warning">Scheduled</span></td>
                                                     <td>$3,000</td>
                                                     <td>$0</td>
@@ -5106,7 +6327,7 @@ Not sure yet</textarea>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><strong>Spring Collection</strong></td>
+                                                    <td><strong>Corporate Housing Campaign</strong></td>
                                                     <td><span class="badge badge-info">Completed</span></td>
                                                     <td>$4,000</td>
                                                     <td>$3,980</td>
@@ -5202,81 +6423,62 @@ Not sure yet</textarea>
                                 </div>
                                 
                                 <div class="config-content">
-                                    <!-- Templates Tab -->
+                                    <!-- Configuration Tab -->
                                     <div class="config-tab-content active" data-content="templates">
-                                        <h3 style="margin-bottom: var(--space-lg);">Choose Your Industry Template</h3>
-                                        <div class="template-grid">
-                                            <div class="template-card selected" data-template="real-estate">
-                                                <div class="template-preview">🏠</div>
-                                                <div class="template-info">
-                                                    <div class="template-title">Real Estate</div>
-                                                    <div class="template-description">Property investment qualification and ROI analysis</div>
-                                                    <div class="template-features">
-                                                        <span class="template-feature">ROI Calculator</span>
-                                                        <span class="template-feature">Property Matching</span>
-                                                        <span class="template-feature">Market Insights</span>
-                                                    </div>
+                                        <h3 style="margin-bottom: var(--space-lg);">Lead Magnet Configuration</h3>
+                                        <div class="config-section">
+                                            <div class="form-group">
+                                                <label class="form-label">Widget Title</label>
+                                                <input type="text" class="form-input" placeholder="Enter widget title" value="Get Your Free Consultation">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Welcome Message</label>
+                                                <textarea class="form-input" rows="3" placeholder="Hi! I'm here to help you with...">Hi! I'm here to help you get started. Let me ask you a few quick questions to provide you with the best solution.</textarea>
+                                            </div>
+                                            <div class="grid grid-cols-2" style="gap: var(--space-lg);">
+                                                <div class="form-group">
+                                                    <label class="form-label">Primary Color</label>
+                                                    <input type="color" class="form-input" value="#DD4124">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Button Text</label>
+                                                    <input type="text" class="form-input" value="Get Started">
                                                 </div>
                                             </div>
-                                            <div class="template-card" data-template="legal">
-                                                <div class="template-preview">⚖️</div>
-                                                <div class="template-info">
-                                                    <div class="template-title">Legal Services</div>
-                                                    <div class="template-description">Case qualification and consultation booking</div>
-                                                    <div class="template-features">
-                                                        <span class="template-feature">Case Assessment</span>
-                                                        <span class="template-feature">Cost Estimates</span>
-                                                        <span class="template-feature">Attorney Matching</span>
-                                                    </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Form Factor</label>
+                                                <div class="radio-group">
+                                                    <label class="radio-item">
+                                                        <input type="radio" name="formFactor" value="popup" checked>
+                                                        <span class="radio-custom"></span>
+                                                        Popup Modal
+                                                    </label>
+                                                    <label class="radio-item">
+                                                        <input type="radio" name="formFactor" value="slide">
+                                                        <span class="radio-custom"></span>
+                                                        Slide-in Panel
+                                                    </label>
+                                                    <label class="radio-item">
+                                                        <input type="radio" name="formFactor" value="embedded">
+                                                        <span class="radio-custom"></span>
+                                                        Embedded Form
+                                                    </label>
+                                                    <label class="radio-item">
+                                                        <input type="radio" name="formFactor" value="floating">
+                                                        <span class="radio-custom"></span>
+                                                        Floating Button
+                                                    </label>
                                                 </div>
                                             </div>
-                                            <div class="template-card" data-template="healthcare">
-                                                <div class="template-preview">🏥</div>
-                                                <div class="template-info">
-                                                    <div class="template-title">Healthcare</div>
-                                                    <div class="template-description">Symptom checker and appointment scheduling</div>
-                                                    <div class="template-features">
-                                                        <span class="template-feature">Symptom Assessment</span>
-                                                        <span class="template-feature">Provider Matching</span>
-                                                        <span class="template-feature">Insurance Check</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="template-card" data-template="home-services">
-                                                <div class="template-preview">🔧</div>
-                                                <div class="template-info">
-                                                    <div class="template-title">Home Services</div>
-                                                    <div class="template-description">Project scoping and instant estimates</div>
-                                                    <div class="template-features">
-                                                        <span class="template-feature">Project Estimator</span>
-                                                        <span class="template-feature">Timeline Calculator</span>
-                                                        <span class="template-feature">Service Matching</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="template-card" data-template="financial">
-                                                <div class="template-preview">💰</div>
-                                                <div class="template-info">
-                                                    <div class="template-title">Financial Services</div>
-                                                    <div class="template-description">Financial planning and investment guidance</div>
-                                                    <div class="template-features">
-                                                        <span class="template-feature">Portfolio Analysis</span>
-                                                        <span class="template-feature">Risk Assessment</span>
-                                                        <span class="template-feature">Goal Planning</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="template-card" data-template="custom">
-                                                <div class="template-preview">🎨</div>
-                                                <div class="template-info">
-                                                    <div class="template-title">Custom Template</div>
-                                                    <div class="template-description">Build your own conversation flow from scratch</div>
-                                                    <div class="template-features">
-                                                        <span class="template-feature">Full Customization</span>
-                                                        <span class="template-feature">Drag & Drop</span>
-                                                        <span class="template-feature">Advanced Logic</span>
-                                                    </div>
-                                                </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Trigger Settings</label>
+                                                <select class="form-select">
+                                                    <option>On page load (3 second delay)</option>
+                                                    <option>On scroll (50% down page)</option>
+                                                    <option>On exit intent</option>
+                                                    <option>On button click</option>
+                                                    <option>Time-based (30 seconds)</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -5368,6 +6570,118 @@ Not sure yet</textarea>
                                                             </button>
                                                         </div>
                                                     </div>
+                                                    <div class="field-item" data-field="number">
+                                                        <div class="field-info">
+                                                            <div class="field-type-icon">
+                                                                <span class="material-symbols-outlined">123</span>
+                                                            </div>
+                                                            <div class="field-details">
+                                                                <h4>Number Input</h4>
+                                                                <p>Numeric values only</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="field-actions">
+                                                            <button class="btn btn-ghost btn-sm" onclick="app.addField('number')">
+                                                                <span class="material-symbols-outlined">add</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field-item" data-field="textarea">
+                                                        <div class="field-info">
+                                                            <div class="field-type-icon">
+                                                                <span class="material-symbols-outlined">notes</span>
+                                                            </div>
+                                                            <div class="field-details">
+                                                                <h4>Text Area</h4>
+                                                                <p>Multi-line text input</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="field-actions">
+                                                            <button class="btn btn-ghost btn-sm" onclick="app.addField('textarea')">
+                                                                <span class="material-symbols-outlined">add</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field-item" data-field="date">
+                                                        <div class="field-info">
+                                                            <div class="field-type-icon">
+                                                                <span class="material-symbols-outlined">calendar_month</span>
+                                                            </div>
+                                                            <div class="field-details">
+                                                                <h4>Date Picker</h4>
+                                                                <p>Date selection with calendar</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="field-actions">
+                                                            <button class="btn btn-ghost btn-sm" onclick="app.addField('date')">
+                                                                <span class="material-symbols-outlined">add</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field-item" data-field="checkbox">
+                                                        <div class="field-info">
+                                                            <div class="field-type-icon">
+                                                                <span class="material-symbols-outlined">check_box</span>
+                                                            </div>
+                                                            <div class="field-details">
+                                                                <h4>Checkboxes</h4>
+                                                                <p>Multiple selection options</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="field-actions">
+                                                            <button class="btn btn-ghost btn-sm" onclick="app.addField('checkbox')">
+                                                                <span class="material-symbols-outlined">add</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field-item" data-field="company">
+                                                        <div class="field-info">
+                                                            <div class="field-type-icon">
+                                                                <span class="material-symbols-outlined">business</span>
+                                                            </div>
+                                                            <div class="field-details">
+                                                                <h4>Company Name</h4>
+                                                                <p>Business/organization field</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="field-actions">
+                                                            <button class="btn btn-ghost btn-sm" onclick="app.addField('company')">
+                                                                <span class="material-symbols-outlined">add</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field-item" data-field="industry">
+                                                        <div class="field-info">
+                                                            <div class="field-type-icon">
+                                                                <span class="material-symbols-outlined">category</span>
+                                                            </div>
+                                                            <div class="field-details">
+                                                                <h4>Industry</h4>
+                                                                <p>Business sector selection</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="field-actions">
+                                                            <button class="btn btn-ghost btn-sm" onclick="app.addField('industry')">
+                                                                <span class="material-symbols-outlined">add</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field-item" data-field="url">
+                                                        <div class="field-info">
+                                                            <div class="field-type-icon">
+                                                                <span class="material-symbols-outlined">link</span>
+                                                            </div>
+                                                            <div class="field-details">
+                                                                <h4>Website URL</h4>
+                                                                <p>URL validation included</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="field-actions">
+                                                            <button class="btn btn-ghost btn-sm" onclick="app.addField('url')">
+                                                                <span class="material-symbols-outlined">add</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             
@@ -5379,6 +6693,90 @@ Not sure yet</textarea>
                                                             <span class="material-symbols-outlined" style="font-size: 48px; margin-bottom: var(--space-md);">tune</span>
                                                             <p>Select a field to configure its properties</p>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Conversation Flow Tab -->
+                                    <div class="config-tab-content" data-content="flow">
+                                        <h3 style="margin-bottom: var(--space-lg);">Conversation Flow Builder</h3>
+                                        <div class="flow-builder">
+                                            <div class="flow-canvas">
+                                                <div class="flow-step" data-step="welcome">
+                                                    <div class="flow-step-icon">👋</div>
+                                                    <div class="flow-step-content">
+                                                        <h4>Welcome Message</h4>
+                                                        <p>Hi! I'm here to help you find the perfect solution...</p>
+                                                    </div>
+                                                    <div class="flow-step-actions">
+                                                        <button class="btn btn-ghost btn-sm">Edit</button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="flow-arrow">↓</div>
+                                                
+                                                <div class="flow-step" data-step="qualification">
+                                                    <div class="flow-step-icon">❓</div>
+                                                    <div class="flow-step-content">
+                                                        <h4>Qualification Questions</h4>
+                                                        <p>What type of solution are you looking for?</p>
+                                                    </div>
+                                                    <div class="flow-step-actions">
+                                                        <button class="btn btn-ghost btn-sm">Edit</button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="flow-arrow">↓</div>
+                                                
+                                                <div class="flow-step" data-step="value">
+                                                    <div class="flow-step-icon">💡</div>
+                                                    <div class="flow-step-content">
+                                                        <h4>Value Delivery</h4>
+                                                        <p>Based on your needs, here's a personalized analysis...</p>
+                                                    </div>
+                                                    <div class="flow-step-actions">
+                                                        <button class="btn btn-ghost btn-sm">Edit</button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="flow-arrow">↓</div>
+                                                
+                                                <div class="flow-step" data-step="action">
+                                                    <div class="flow-step-icon">🎯</div>
+                                                    <div class="flow-step-content">
+                                                        <h4>Call to Action</h4>
+                                                        <p>Ready to schedule a consultation?</p>
+                                                    </div>
+                                                    <div class="flow-step-actions">
+                                                        <button class="btn btn-ghost btn-sm">Edit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="flow-sidebar">
+                                                <h4 style="margin-bottom: var(--space-md);">Flow Components</h4>
+                                                <div class="component-list">
+                                                    <div class="component-item" draggable="true">
+                                                        <span class="material-symbols-outlined">message</span>
+                                                        Message
+                                                    </div>
+                                                    <div class="component-item" draggable="true">
+                                                        <span class="material-symbols-outlined">help</span>
+                                                        Question
+                                                    </div>
+                                                    <div class="component-item" draggable="true">
+                                                        <span class="material-symbols-outlined">functions</span>
+                                                        Calculator
+                                                    </div>
+                                                    <div class="component-item" draggable="true">
+                                                        <span class="material-symbols-outlined">split_scene</span>
+                                                        Condition
+                                                    </div>
+                                                    <div class="component-item" draggable="true">
+                                                        <span class="material-symbols-outlined">play_arrow</span>
+                                                        Action
                                                     </div>
                                                 </div>
                                             </div>
@@ -5436,6 +6834,17 @@ Not sure yet</textarea>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="field-item">
+                                                        <div class="field-info">
+                                                            <div class="field-type-icon" style="background: var(--m5-accent);">
+                                                                <span class="material-symbols-outlined">request_quote</span>
+                                                            </div>
+                                                            <div class="field-details">
+                                                                <h4>Request Quote</h4>
+                                                                <p>Generate custom pricing proposal</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             
@@ -5448,6 +6857,7 @@ Not sure yet</textarea>
                                                             <option value="calendly">Calendly</option>
                                                             <option value="acuity">Acuity Scheduling</option>
                                                             <option value="google">Google Calendar</option>
+                                                            <option value="outlook">Outlook Calendar</option>
                                                             <option value="custom">Custom Integration</option>
                                                         </select>
                                                     </div>
@@ -5456,15 +6866,19 @@ Not sure yet</textarea>
                                                         <div class="checkbox-group">
                                                             <label class="checkbox-item">
                                                                 <input type="checkbox" checked>
-                                                                Property Consultation (45 min)
+                                                                Initial Consultation (45 min)
                                                             </label>
                                                             <label class="checkbox-item">
                                                                 <input type="checkbox" checked>
-                                                                Investment Analysis (30 min)
+                                                                Strategic Analysis (30 min)
                                                             </label>
                                                             <label class="checkbox-item">
                                                                 <input type="checkbox">
-                                                                Property Tour (2 hours)
+                                                                Deep Dive Session (90 min)
+                                                            </label>
+                                                            <label class="checkbox-item">
+                                                                <input type="checkbox">
+                                                                Discovery Call (15 min)
                                                             </label>
                                                         </div>
                                                     </div>
@@ -5474,6 +6888,15 @@ Not sure yet</textarea>
                                                             <input type="time" class="form-input" value="09:00">
                                                             <input type="time" class="form-input" value="17:00">
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label">Time Zone</label>
+                                                        <select class="form-select">
+                                                            <option value="EST">Eastern Time (EST)</option>
+                                                            <option value="CST">Central Time (CST)</option>
+                                                            <option value="MST">Mountain Time (MST)</option>
+                                                            <option value="PST">Pacific Time (PST)</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -5488,21 +6911,21 @@ Not sure yet</textarea>
                                                 <div class="preview-toolbar">
                                                     <div style="font-size: var(--font-size-sm); font-weight: 600;">Conversational Lead Magnet Preview</div>
                                                     <div class="device-selector">
-                                                        <button class="device-btn active">Desktop</button>
-                                                        <button class="device-btn">Mobile</button>
+                                                        <button class="device-btn active" onclick="app.switchPreviewDevice('desktop')">Desktop</button>
+                                                        <button class="device-btn" onclick="app.switchPreviewDevice('mobile')">Mobile</button>
                                                     </div>
                                                 </div>
                                                 <div class="preview-content">
-                                                    <div style="text-align: center;">
+                                                    <div style="text-align: center; padding: var(--space-2xl);">
                                                         <div style="font-size: 48px; margin-bottom: var(--space-md);">💬</div>
                                                         <h4 style="margin-bottom: var(--space-sm);">Conversational Lead Magnet</h4>
-                                                        <p style="color: var(--m5-gray-600); font-size: var(--font-size-sm); margin-bottom: var(--space-lg);">
-                                                            Your configured lead magnet will appear here with the selected template and conversation flow.
-                                                        </p>
-                                                        <button class="btn btn-primary" onclick="window.open('/tmpl/acme_rentals_demo.html', '_blank')">
-                                                            <span class="material-symbols-outlined">open_in_new</span>
-                                                            Open Full Demo
-                                                        </button>
+                                                        <p style="color: var(--m5-gray-600); font-size: var(--font-size-sm); margin-bottom: var(--space-lg);">Interactive preview will appear here</p>
+                                                        <div class="form-factor-selector">
+                                                            <button class="btn btn-secondary btn-sm" onclick="app.previewFormFactor('popup')">Popup</button>
+                                                            <button class="btn btn-secondary btn-sm" onclick="app.previewFormFactor('slide')">Slide-in</button>
+                                                            <button class="btn btn-secondary btn-sm" onclick="app.previewFormFactor('embedded')">Embedded</button>
+                                                            <button class="btn btn-secondary btn-sm" onclick="app.previewFormFactor('floating')">Floating</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -5541,7 +6964,7 @@ Not sure yet</textarea>
                                             </div>
                                             <div class="step-title">Setup & Configuration</div>
                                             <div class="step-status">Completed</div>
-                                            <button class="btn btn-ghost btn-sm mt-2" onclick="app.showConfigurationModal()">
+                                            <button class="btn btn-ghost btn-sm mt-2" id="configEditBtn">
                                                 <span class="material-symbols-outlined">edit</span>
                                                 Edit
                                             </button>
@@ -5576,36 +6999,36 @@ Not sure yet</textarea>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><strong>Summer Campaign Ad Creative Set</strong></td>
+                                                    <td><strong>ACME Rentals Summer Promotion Ads</strong></td>
                                                     <td>Ad Creative</td>
                                                     <td>Today, 10:30 AM</td>
                                                     <td><span class="badge badge-warning">Pending Review</span></td>
                                                     <td>
-                                                        <button class="btn btn-primary btn-sm" onclick="app.showDeliverableReview('Summer Campaign Ad Creative Set', 'ad-creative')">
+                                                        <button class="btn btn-primary btn-sm" onclick="app.showDeliverableReview('ACME Rentals Summer Promotion Ads', 'ad-creative')">
                                                             <span class="material-symbols-outlined">visibility</span>
                                                             Review
                                                         </button>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><strong>July Content Calendar</strong></td>
+                                                    <td><strong>August Property Showcase Content</strong></td>
                                                     <td>Content Strategy</td>
                                                     <td>Yesterday, 3:45 PM</td>
                                                     <td><span class="badge badge-warning">Pending Review</span></td>
                                                     <td>
-                                                        <button class="btn btn-primary btn-sm" onclick="app.showDeliverableReview('July Content Calendar', 'content-calendar')">
+                                                        <button class="btn btn-primary btn-sm" onclick="app.showDeliverableReview('August Property Showcase Content', 'content-calendar')">
                                                             <span class="material-symbols-outlined">visibility</span>
                                                             Review
                                                         </button>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><strong>Rental Property Landing Page</strong></td>
+                                                    <td><strong>Luxury Apartment Landing Page</strong></td>
                                                     <td>Web Design</td>
                                                     <td>2 days ago</td>
                                                     <td><span class="badge badge-warning">Pending Review</span></td>
                                                     <td>
-                                                        <button class="btn btn-primary btn-sm" onclick="app.showDeliverableReview('Rental Property Landing Page', 'landing-page')">
+                                                        <button class="btn btn-primary btn-sm" onclick="app.showDeliverableReview('Luxury Apartment Landing Page', 'landing-page')">
                                                             <span class="material-symbols-outlined">visibility</span>
                                                             Review
                                                         </button>
@@ -6028,6 +7451,144 @@ Not sure yet</textarea>
                     `
                 },
                 
+                'add-users': {
+                    render: () => `
+                        <div class="view">
+                            <div class="page-header">
+                                <h1 class="page-title">Add New User</h1>
+                                <p class="page-subtitle">Create a new user account and configure their access permissions.</p>
+                            </div>
+                            
+                            <div class="card" style="max-width: 600px; margin: 0 auto;">
+                                <div class="card-body">
+                                    <form id="addUserForm" onsubmit="app.handleAddUser(event)">
+                                        <!-- User Information Section -->
+                                        <div class="form-section">
+                                            <h3 class="form-section-title">
+                                                <span class="material-symbols-outlined">person</span>
+                                                User Information
+                                            </h3>
+                                            
+                                            <div class="form-grid">
+                                                <div class="form-group">
+                                                    <label for="firstName">First Name <span style="color: var(--m5-danger);">*</span></label>
+                                                    <input type="text" id="firstName" name="firstName" class="form-control" required placeholder="Enter first name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="lastName">Last Name <span style="color: var(--m5-danger);">*</span></label>
+                                                    <input type="text" id="lastName" name="lastName" class="form-control" required placeholder="Enter last name">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="email">Email Address <span style="color: var(--m5-danger);">*</span></label>
+                                                <input type="email" id="email" name="email" class="form-control" required placeholder="user@company.com">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="role">User Role <span style="color: var(--m5-danger);">*</span></label>
+                                                <select id="role" name="role" class="form-control" required>
+                                                    <option value="">Select a role...</option>
+                                                    <option value="client_standard_role">Client User</option>
+                                                    <option value="client_admin_role">Client Admin</option>
+                                                    <option value="staff_role">Staff User</option>
+                                                    <option value="admin_role">Admin User</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Access Permissions Section -->
+                                        <div class="form-section">
+                                            <h3 class="form-section-title">
+                                                <span class="material-symbols-outlined">security</span>
+                                                Access Permissions
+                                            </h3>
+                                            <p class="form-section-subtitle">Select which areas of the portal this user can access.</p>
+                                            
+                                            <div class="permission-grid">
+                                                <label class="permission-card">
+                                                    <input type="checkbox" name="permissions" value="billing" id="perm-billing">
+                                                    <div class="permission-content">
+                                                        <div class="permission-icon">
+                                                            <span class="material-symbols-outlined">receipt</span>
+                                                        </div>
+                                                        <div class="permission-info">
+                                                            <h4>Billing & Invoices</h4>
+                                                            <p>View invoices, payment history, and billing information</p>
+                                                        </div>
+                                                        <div class="permission-check">
+                                                            <span class="material-symbols-outlined">check</span>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                
+                                                <label class="permission-card">
+                                                    <input type="checkbox" name="permissions" value="files" id="perm-files">
+                                                    <div class="permission-content">
+                                                        <div class="permission-icon">
+                                                            <span class="material-symbols-outlined">folder</span>
+                                                        </div>
+                                                        <div class="permission-info">
+                                                            <h4>Files & Assets</h4>
+                                                            <p>Upload, download, and manage project files and assets</p>
+                                                        </div>
+                                                        <div class="permission-check">
+                                                            <span class="material-symbols-outlined">check</span>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                
+                                                <label class="permission-card">
+                                                    <input type="checkbox" name="permissions" value="analytics" id="perm-analytics">
+                                                    <div class="permission-content">
+                                                        <div class="permission-icon">
+                                                            <span class="material-symbols-outlined">analytics</span>
+                                                        </div>
+                                                        <div class="permission-info">
+                                                            <h4>Analytics & Reports</h4>
+                                                            <p>View campaign performance and analytics data</p>
+                                                        </div>
+                                                        <div class="permission-check">
+                                                            <span class="material-symbols-outlined">check</span>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                
+                                                <label class="permission-card">
+                                                    <input type="checkbox" name="permissions" value="campaigns" id="perm-campaigns">
+                                                    <div class="permission-content">
+                                                        <div class="permission-icon">
+                                                            <span class="material-symbols-outlined">campaign</span>
+                                                        </div>
+                                                        <div class="permission-info">
+                                                            <h4>Campaign Management</h4>
+                                                            <p>View and manage marketing campaigns</p>
+                                                        </div>
+                                                        <div class="permission-check">
+                                                            <span class="material-symbols-outlined">check</span>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Form Actions -->
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-secondary" onclick="app.navigate('dashboard')">
+                                                Cancel
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <span class="material-symbols-outlined">person_add</span>
+                                                Create User
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+                
                 '404': {
                     render: () => `
                         <div class="view">
@@ -6048,6 +7609,7 @@ Not sure yet</textarea>
         let app;
         document.addEventListener('DOMContentLoaded', () => {
             app = new PortalApp();
+            window.app = app; // Make app globally accessible
         });
     </script>
 
@@ -6141,11 +7703,11 @@ Not sure yet</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Heading</label>
-                                    <input type="text" placeholder="Get Your Free Consultation" value="Get Your Free Consultation">
+                                    <input type="text" placeholder="Schedule Your Property Tour" value="Schedule Your Property Tour">
                                 </div>
                                 <div class="form-group">
                                     <label>Subheading</label>
-                                    <textarea placeholder="Enter your information below">Enter your information below and we'll contact you within 24 hours</textarea>
+                                    <textarea placeholder="Enter your information below">Enter your information below and schedule your personalized property tour today</textarea>
                                 </div>
                             </div>
                         </div>
@@ -6330,7 +7892,7 @@ Not sure yet</textarea>
         <div class="popup-container">
             <div class="popup-header">
                 <h2>Marketing Configuration Settings</h2>
-                <button class="btn-close" onclick="app.closeConfigurationModal()">
+                <button class="btn-close" onclick="window.app.closeConfigurationModal()">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
@@ -6347,12 +7909,13 @@ Not sure yet</textarea>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Primary Domain</label>
-                                <input type="text" id="configDomain" value="jayhunterproperties.com" placeholder="https://example.com">
+                                <input type="text" id="configDomain" value="acmerentals.com" placeholder="https://example.com">
                             </div>
                             <div class="form-group">
                                 <label>Additional Domains</label>
-                                <textarea id="configAdditionalDomains" placeholder="One domain per line">blog.jayhunterproperties.com
-invest.jayhunterproperties.com</textarea>
+                                <textarea id="configAdditionalDomains" placeholder="One domain per line">blog.acmerentals.com
+properties.acmerentals.com
+apply.acmerentals.com</textarea>
                             </div>
                         </div>
                     </div>
@@ -6414,7 +7977,7 @@ invest.jayhunterproperties.com</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Lead Notification Email</label>
-                                <input type="email" id="configNotificationEmail" value="jay@jayhunterproperties.com" placeholder="email@example.com">
+                                <input type="email" id="configNotificationEmail" value="jay@acmerentals.com" placeholder="email@example.com">
                             </div>
                             <div class="form-group">
                                 <label>API Key (Auto-generated)</label>
@@ -6437,7 +8000,7 @@ invest.jayhunterproperties.com</textarea>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Business Name</label>
-                                <input type="text" id="configBusinessName" value="Jay Hunter Properties LLC" placeholder="Your Business Name">
+                                <input type="text" id="configBusinessName" value="ACME Rentals LLC" placeholder="Your Business Name">
                             </div>
                             <div class="form-group">
                                 <label>Industry</label>
@@ -6464,8 +8027,8 @@ invest.jayhunterproperties.com</textarea>
                             Test Configuration
                         </button>
                         <div style="flex: 1;"></div>
-                        <button class="btn btn-ghost" onclick="app.closeConfigurationModal()">Cancel</button>
-                        <button class="btn btn-primary" onclick="app.saveConfiguration()">
+                        <button class="btn btn-ghost" onclick="window.app.closeConfigurationModal()">Cancel</button>
+                        <button class="btn btn-primary" onclick="window.app.saveConfiguration()">
                             <span class="material-symbols-outlined">save</span>
                             Save Changes
                         </button>
@@ -6655,6 +8218,10 @@ invest.jayhunterproperties.com</textarea>
             </div>
         </div>
     </div>
+
+    <script>
+        // Lead magnet removed as requested
+    </script>
 
 </body>
 </html>
